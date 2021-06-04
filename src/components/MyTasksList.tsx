@@ -29,14 +29,19 @@ export function MyTasksList({ tasks, onLongPress, onPress }: MyTasksListProps) {
           <TouchableOpacity
             testID={`button-${index}`}
             activeOpacity={0.7}
-            //TODO - use onPress, onLongPress and style props
+            onLongPress={() => onLongPress(item.id)}
+            onPress={() => onPress(item.id)}
+            style={item.done ? styles.taskButtonDone : styles.taskButton}
+          //TODO - use onPress, onLongPress and style props
           >
-            <View 
+            <View
               testID={`marker-${index}`}
-              //TODO - use style prop 
+              style={item.done ? styles.taskMarkerDone : styles.taskMarker}
+            //TODO - use style prop 
             />
-            <Text 
-              //TODO - use style prop
+            <Text
+              style={item.done ? styles.taskTextDone : styles.taskText}
+            //TODO - use style prop
             >
               {item.title}
             </Text>
